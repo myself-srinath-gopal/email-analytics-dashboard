@@ -141,7 +141,7 @@ const CampaignPerformanceOverviewDashboard = () => {
                         </div>
 
                         {/* Right Sidebar */}
-                        <div className="xl:col-span-4 gap-6">
+                        <div className="xl:col-span-4">
                             <RealtimeActivityFeed
                                 selectedCampaigns={selectedCampaigns}
                                 isLoading={isLoading}

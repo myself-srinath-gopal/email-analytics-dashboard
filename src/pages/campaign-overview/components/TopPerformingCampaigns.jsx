@@ -85,7 +85,7 @@ const TopPerformingCampaigns = ({ isLoading }) => {
     };
 
     const CampaignCard = ({ campaign, rank }) => (
-        <div className="flex items-center gap-x-4 p-4 hover:bg-(--secondary-50) rounded-lg nav-transition">
+        <div className="flex max-[470px]:items-start items-center gap-x-4 max-[470px]:p-1 p-4 sm:hover:bg-(--secondary-50) rounded-lg nav-transition">
             {/* Rank Badge */}
             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${rank === 1 ? 'bg-(--warning) text-white' :
                 rank === 2 ? 'bg-(--secondary-300) text-white' :
@@ -96,7 +96,7 @@ const TopPerformingCampaigns = ({ isLoading }) => {
 
             <div className="flex-1 min-w-0">
                 {/* Campaign Name & Status */}
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex max-[425px]:flex-col max-[425px]:items-start max-[425px]:space-y-2 items-center justify-between mb-2">
                     <h4 className="font-medium text-sm text-(--text-primary) truncate">
                         {campaign.name}
                     </h4>
@@ -106,7 +106,7 @@ const TopPerformingCampaigns = ({ isLoading }) => {
                 </div>
 
                 {/* Metrics Grid */}
-                <div className="grid grid-cols-2 gap-2 text-xs">
+                <div className="grid max-[470px]:grid-cols-1 grid-cols-2 gap-3 text-xs">
                     <div>
                         <span className="text-(--text-secondary)">Open Rate:</span>
                         <span className="font-medium text-(--text-primary) ml-1">
@@ -213,12 +213,12 @@ const TopPerformingCampaigns = ({ isLoading }) => {
 
                     {/* Quick Actions */}
                     <div className="mt-4 pt-4 border-t border-(--border)">
-                        <div className="flex space-x-2">
-                            <button className="flex-1 flex items-center justify-center space-x-2 px-3 py-2 bg-(--primary-50) hover:bg-(--primary-100) text-(--primary) rounded-lg nav-transition">
+                        <div className="flex max-[365px]:flex-col max-[365px]:space-y-2 space-x-2">
+                            <button className="max-[365px]:w-full flex-1 flex items-center justify-center space-x-2 px-3 py-2 bg-(--primary-50) hover:bg-(--primary-100) text-(--primary) rounded-lg nav-transition">
                                 <Icon name="Copy" size={14} />
                                 <span className="text-xs font-medium">Duplicate Best</span>
                             </button>
-                            <button className="flex-1 flex items-center justify-center space-x-2 px-3 py-2 bg-(--secondary-50) hover:bg-(--secondary-100) text-(--text-secondary) rounded-lg nav-transition">
+                            <button className="max-[365px]:w-full flex-1 flex items-center justify-center space-x-2 px-3 py-2 bg-(--secondary-50) hover:bg-(--secondary-100) text-(--text-secondary) rounded-lg nav-transition">
                                 <Icon name="BarChart3" size={14} />
                                 <span className="text-xs font-medium">Compare</span>
                             </button>

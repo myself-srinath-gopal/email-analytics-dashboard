@@ -82,46 +82,46 @@ const EngagementTimelineChart = ({ isLoading }) => {
                 <>
                     {/* Chart */}
                     <div className="h-80 mb-6">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <LineChart
-                                data={timelineData}
-                                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                            >
-                                <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
-                                <XAxis
-                                    dataKey="date"
-                                    tickFormatter={formatXAxisLabel}
-                                    tick={{ fontSize: 12, fill: '#64748B' }}
-                                    axisLine={{ stroke: '#E2E8F0' }}
-                                />
-                                <YAxis
-                                    tick={{ fontSize: 12, fill: '#64748B' }}
-                                    axisLine={{ stroke: '#E2E8F0' }}
-                                />
-                                <Tooltip content={<EngagementTooltip metrics={metrics} />} />
-                                <Legend />
+                        <LineChart
+                            data={timelineData}
+                            responsive
+                            width={"100%"}
+                            height={"100%"}
+                        >
+                            <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
+                            <XAxis
+                                dataKey="date"
+                                tickFormatter={formatXAxisLabel}
+                                tick={{ fontSize: 12, fill: '#64748B' }}
+                                axisLine={{ stroke: '#E2E8F0' }}
+                            />
+                            <YAxis
+                                tick={{ fontSize: 12, fill: '#64748B' }}
+                                axisLine={{ stroke: '#E2E8F0' }}
+                            />
+                            <Tooltip content={<EngagementTooltip metrics={metrics} />} />
+                            <Legend />
 
-                                {activeMetrics.map((metricKey) => {
-                                    const metric = metrics.find(m => m.key === metricKey);
-                                    return (
-                                        <Line
-                                            key={metricKey}
-                                            type="monotone"
-                                            dataKey={metricKey}
-                                            stroke={metric.color}
-                                            strokeWidth={2}
-                                            dot={{ fill: metric.color, strokeWidth: 2, r: 4 }}
-                                            activeDot={{ r: 6, stroke: metric.color, strokeWidth: 2 }}
-                                            name={metric.label}
-                                        />
-                                    );
-                                })}
-                            </LineChart>
-                        </ResponsiveContainer>
+                            {activeMetrics.map((metricKey) => {
+                                const metric = metrics.find(m => m.key === metricKey);
+                                return (
+                                    <Line
+                                        key={metricKey}
+                                        type="monotone"
+                                        dataKey={metricKey}
+                                        stroke={metric.color}
+                                        strokeWidth={2}
+                                        dot={{ fill: metric.color, strokeWidth: 2, r: 4 }}
+                                        activeDot={{ r: 6, stroke: metric.color, strokeWidth: 2 }}
+                                        name={metric.label}
+                                    />
+                                );
+                            })}
+                        </LineChart>
                     </div>
 
                     {/* Summary Stats */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div className="grid max-[450px]:grid-cols-1 max-[450px]:gap-2 grid-cols-2 lg:grid-cols-4 gap-4">
                         {metrics.map((metric) => {
                             const total = timelineData.reduce((sum, day) => sum + day[metric.key], 0);
                             const average = Math.round(total / timelineData.length);
@@ -144,7 +144,7 @@ const EngagementTimelineChart = ({ isLoading }) => {
                                             {metric.label}
                                         </span>
                                     </div>
-                                    <div className="text-lg font-bold text-(--text-primary)">
+                                    <div className="text-lg font-bold text-(--text-primary) mb-1">
                                         {total.toLocaleString()}
                                     </div>
                                     <div className="text-xs text-(--text-secondary)">
@@ -180,8 +180,8 @@ const EngagementTimelineChart = ({ isLoading }) => {
 const EngagementTooltip = ({ active, payload, label, metrics }) => {
     if (active && payload && payload.length) {
         return (
-            <div className="bg-surface border border-border rounded-lg p-4 shadow-elevation-md">
-                <div className="font-medium text-text-primary mb-2">
+            <div className="bg-(--surface) border border-(--border) rounded-lg p-4 shadow-md">
+                <div className="font-medium text-(--text-primary) mb-2">
                     {new Date(label).toLocaleDateString('en-US', {
                         weekday: 'short',
                         month: 'short',
@@ -196,11 +196,11 @@ const EngagementTooltip = ({ active, payload, label, metrics }) => {
                                     className="w-3 h-3 rounded-full"
                                     style={{ backgroundColor: entry.color }}
                                 />
-                                <span className="text-sm text-text-secondary">
+                                <span className="text-sm text-(--text-secondary)">
                                     {metrics.find(m => m.key === entry.dataKey)?.label}
                                 </span>
                             </div>
-                            <span className="font-medium text-text-primary">
+                            <span className="font-medium text-(--text-primary)">
                                 {entry.value.toLocaleString()}
                             </span>
                         </div>

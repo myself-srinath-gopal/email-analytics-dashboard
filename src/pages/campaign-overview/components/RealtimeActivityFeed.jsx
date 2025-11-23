@@ -113,7 +113,7 @@ const RealtimeActivityFeed = ({ isLoading }) => {
   };
 
   return (
-    <div className="bg-(--surface) border border-(--border) rounded-lg p-6">
+    <div className="bg-(--surface) border border-(--border) rounded-lg p-6 mb-6">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">

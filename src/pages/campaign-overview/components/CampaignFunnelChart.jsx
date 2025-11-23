@@ -52,7 +52,7 @@ const CampaignFunnelChart = ({ isLoading }) => {
         const conversionRate = index > 0 ? ((stage.value / funnelData[index - 1].value) * 100).toFixed(1) : null;
 
         return (
-            <div className="flex items-center gap-4 p-4 bg-(--surface) border border-(--border) not-last:border-b-0 rounded-lg hover:shadow--sm nav-transition">
+            <div className="flex max-[470px]:items-start max-[470px]:flex-col items-center gap-4 p-4 bg-(--surface) border border-(--border) not-last:border-b-0 rounded-lg hover:shadow-sm transition duration-300">
                 <div
                     className="w-12 h-12 rounded-lg flex items-center justify-center"
                     style={{ backgroundColor: `${stage.color}20` }}
@@ -61,14 +61,14 @@ const CampaignFunnelChart = ({ isLoading }) => {
                 </div>
 
                 <div className="flex-1">
-                    <div className="flex items-center justify-between mb-1">
+                    <div className="flex max-[470px]:flex-col max-[470px]:items-start items-center justify-between mb-1">
                         <span className="font-medium text-(--text-primary)">{stage.stage}</span>
                         <span className="text-sm font-medium text-(--text-primary)">
                             {stage.value.toLocaleString()}
                         </span>
                     </div>
 
-                    <div className="flex items-center justify-between">
+                    <div className="flex max-[470px]:flex-col max-[470px]:items-start items-center justify-between">
                         <div className="flex items-center gap-2">
                             <div className="w-24 bg-(--secondary-100) rounded-full h-2">
                                 <div
@@ -137,29 +137,29 @@ const CampaignFunnelChart = ({ isLoading }) => {
                     {/* Funnel Visualization */}
                     <div className="mb-6">
                         <div className="h-64">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <BarChart
-                                    data={funnelData}
-                                    margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                                >
-                                    <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
-                                    <XAxis
-                                        dataKey="stage"
-                                        tick={{ fontSize: 12, fill: '#64748B' }}
-                                        axisLine={{ stroke: '#E2E8F0' }}
-                                    />
-                                    <YAxis
-                                        tick={{ fontSize: 12, fill: '#64748B' }}
-                                        axisLine={{ stroke: '#E2E8F0' }}
-                                    />
-                                    <Tooltip content={<CustomTooltip />} />
-                                    <Bar dataKey="value" radius={[4, 4, 0, 0]}>
-                                        {funnelData.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={entry.color} />
-                                        ))}
-                                    </Bar>
-                                </BarChart>
-                            </ResponsiveContainer>
+                            <BarChart
+                                data={funnelData}
+                                responsive
+                                width={"100%"}
+                                height={"100%"}
+                            >
+                                <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
+                                <XAxis
+                                    dataKey="stage"
+                                    tick={{ fontSize: 12, fill: '#64748B' }}
+                                    axisLine={{ stroke: '#E2E8F0' }}
+                                />
+                                <YAxis
+                                    tick={{ fontSize: 12, fill: '#64748B' }}
+                                    axisLine={{ stroke: '#E2E8F0' }}
+                                />
+                                <Tooltip content={<CustomTooltip />} />
+                                <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+                                    {funnelData.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={entry.color} />
+                                    ))}
+                                </Bar>
+                            </BarChart>
                         </div>
                     </div>
 
