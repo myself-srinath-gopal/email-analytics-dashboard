@@ -152,42 +152,39 @@ const RealTimeChart = ({ liveMetrics, isLiveMode, refreshInterval }) => {
 
             {/* Chart */}
             <div className="h-80 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
-                        <XAxis
-                            dataKey="time"
-                            stroke="#64748B"
-                            fontSize={12}
-                            tickLine={false}
-                            axisLine={false}
-                        />
-                        <YAxis
-                            stroke="#64748B"
-                            fontSize={12}
-                            tickLine={false}
-                            axisLine={false}
-                        />
-                        <Tooltip content={<CustomTooltip metricOptions={metricOptions} />} />
-                        <Legend />
-
-                        {selectedMetrics.map((metricKey) => {
-                            const metric = metricOptions.find(m => m.key === metricKey);
-                            return (
-                                <Line
-                                    key={metricKey}
-                                    type="monotone"
-                                    dataKey={metricKey}
-                                    stroke={metric.color}
-                                    strokeWidth={2}
-                                    dot={false}
-                                    name={metric.label}
-                                    connectNulls={false}
-                                />
-                            );
-                        })}
-                    </LineChart>
-                </ResponsiveContainer>
+                <LineChart data={chartData} responsive width={"100%"} height={"100%"}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
+                    <XAxis
+                        dataKey="time"
+                        stroke="#64748B"
+                        fontSize={12}
+                        tickLine={false}
+                        axisLine={false}
+                    />
+                    <YAxis
+                        stroke="#64748B"
+                        fontSize={12}
+                        tickLine={false}
+                        axisLine={false}
+                    />
+                    <Tooltip content={<CustomTooltip metricOptions={metricOptions} />} />
+                    <Legend />
+                    {selectedMetrics.map((metricKey) => {
+                        const metric = metricOptions.find(m => m.key === metricKey);
+                        return (
+                            <Line
+                                key={metricKey}
+                                type="monotone"
+                                dataKey={metricKey}
+                                stroke={metric.color}
+                                strokeWidth={2}
+                                dot={false}
+                                name={metric.label}
+                                connectNulls={false}
+                            />
+                        );
+                    })}
+                </LineChart>
             </div>
 
             {/* Performance Indicators */}
@@ -207,7 +204,7 @@ const RealTimeChart = ({ liveMetrics, isLiveMode, refreshInterval }) => {
                                         className="w-3 h-3 rounded-full"
                                         style={{ backgroundColor: metric.color }}
                                     />
-                                    <span className="text-sm font-medium text-(--text-primary)">
+                                    <span className="text-xs sm:text-sm font-medium text-(--text-primary)">
                                         {metric.label}
                                     </span>
                                 </div>
@@ -220,11 +217,11 @@ const RealTimeChart = ({ liveMetrics, isLiveMode, refreshInterval }) => {
                                 />
                             </div>
 
-                            <div className="text-2xl font-bold text-(--text-primary) mb-1">
+                            <div className="text-lg sm:text-2xl font-bold text-(--text-primary) mb-1">
                                 {currentValue.toFixed(1)}{metric.unit}
                             </div>
 
-                            <div className="text-xs text-(--text-secondary)">
+                            <div className="text-xs sm:text-xs text-(--text-secondary)">
                                 Target: &gt;{threshold.good}{metric.unit} |
                                 Warning: &lt;{threshold.warning}{metric.unit}
                             </div>

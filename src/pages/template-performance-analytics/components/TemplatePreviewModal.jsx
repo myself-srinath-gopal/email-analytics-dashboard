@@ -70,7 +70,7 @@ const TemplatePreviewModal = ({ template, onClose }) => {
 </html>`;
 
     return (
-        <div className="fixed inset-0 z-1200 overflow-y-auto">
+        <div className="fixed inset-0 z-1200 overflow-scroll">
             <div className="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
                 {/* Background overlay */}
                 <div
@@ -84,7 +84,7 @@ const TemplatePreviewModal = ({ template, onClose }) => {
                     {/* Modal */}
                     <div className="inline-block w-full max-w-6xl my-8 overflow-hidden text-left align-middle transition-all transform bg-(--surface) shadow-elevation-lg rounded-lg">
                         {/* Header */}
-                        <div className="flex items-center justify-between p-6 border-b border-(--border)">
+                        <div className="flex max-[550px]:flex-col max-[550px]:items-start max-[550px]:space-y-4 items-center justify-between p-6 border-b border-(--border)">
                             <div className="flex items-center space-x-4">
                                 <div className="w-12 h-12 rounded-lg overflow-hidden">
                                     <Image
@@ -139,13 +139,13 @@ const TemplatePreviewModal = ({ template, onClose }) => {
 
                         {/* Tabs */}
                         <div className="border-b border-(--border)">
-                            <nav className="flex space-x-8 px-6">
+                            <nav className="flex max-[550px]:flex-col space-x-8 px-6">
                                 {tabs.map((tab) => (
                                     <button
                                         key={tab.id}
                                         onClick={() => setActiveTab(tab.id)}
-                                        className={`flex items-center space-x-2 py-4 border-b-2 font-medium text-sm nav-transition ${activeTab === tab.id
-                                            ? 'border-(--primary) text-(--primary)' : 'border-transparent text-(--text-secondary) hover:text-(--text-primary)'
+                                        className={`flex items-center space-x-2 py-4 min-[550px]:border-b-2 font-medium text-sm nav-transition ${activeTab === tab.id
+                                            ? 'min-[550px]:border-(--primary) text-(--primary)' : 'border-transparent text-(--text-secondary) hover:text-(--text-primary)'
                                             }`}
                                     >
                                         <Icon name={tab.icon} size={16} />
@@ -158,7 +158,7 @@ const TemplatePreviewModal = ({ template, onClose }) => {
                         {/* Content */}
                         <div className="p-6">
                             {activeTab === 'preview' && (
-                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {/* Template Preview */}
                                     <div>
                                         <h3 className="text-lg font-medium text-(--text-primary) mb-4">

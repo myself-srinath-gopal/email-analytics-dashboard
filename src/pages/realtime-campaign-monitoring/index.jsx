@@ -140,15 +140,15 @@ const RealTimeCampaignMonitoring = () => {
                     {/* Page Header */}
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
                         <div>
-                            <h1 className="text-2xl font-bold text-(--text-primary) mb-2">
+                            <h1 className="text-xl xl:text-2xl font-bold text-(--text-primary) mb-2">
                                 Real-Time Campaign Monitoring
                             </h1>
-                            <p className="text-(--text-secondary)">
+                            <p className="text-(--text-secondary) text-sm xl:text-base">
                                 Live performance tracking and instant alerts for active campaigns
                             </p>
                         </div>
 
-                        <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 mt-4 lg:mt-0">
+                        <div className="flex max-[725px]:flex-col max-[725px]:gap-4 flex-row max-[725px]:items-start items-center space-y-3 sm:space-y-0 sm:space-x-4 mt-4 lg:mt-0">
                             {/* Refresh Controls */}
                             <div className="flex items-center space-x-3">
                                 <div className="flex items-center space-x-2">
@@ -193,17 +193,17 @@ const RealTimeCampaignMonitoring = () => {
                                 <div className="flex items-center justify-center mb-4">
                                     <Icon
                                         name={getHealthStatusIcon(campaignHealth.status)}
-                                        size={48}
+                                        size={36}
                                         color="white"
                                     />
                                 </div>
-                                <h3 className="text-2xl font-bold mb-2">
+                                <h3 className="text-xl sm:text-2xl font-bold mb-2">
                                     Campaign Health
                                 </h3>
-                                <div className="text-4xl font-bold mb-2">
+                                <div className="text-2xl sm:text-4xl font-bold mb-2">
                                     {campaignHealth.score}
                                 </div>
-                                <div className="text-lg font-medium capitalize">
+                                <div className="text-base sm:text-lg font-medium capitalize">
                                     {campaignHealth.status}
                                 </div>
                                 {campaignHealth.issues.length > 0 && (
@@ -217,8 +217,8 @@ const RealTimeCampaignMonitoring = () => {
                         {/* Connection Status & Last Update */}
                         <div className="lg:col-span-2">
                             <div className="bg-(--surface) border border-(--border) rounded-xl p-6">
-                                <div className="flex items-center justify-between mb-4">
-                                    <h3 className="text-lg font-semibold text-(--text-primary)">
+                                <div className="flex max-[425px]:flex-col max-[425px]:gap-2 items-center justify-between mb-4">
+                                    <h3 className="text-base sm:text-lg font-semibold text-(--text-primary)">
                                         Connection Status
                                     </h3>
                                     <div className="flex items-center space-x-2">
@@ -234,28 +234,28 @@ const RealTimeCampaignMonitoring = () => {
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div className="grid max-[425px]:grid-cols-1 grid-cols-2 md:grid-cols-4 gap-4">
                                     <div className="text-center">
-                                        <div className="text-2xl font-bold text-(--text-primary)">
+                                        <div className="text-xl sm:text-2xl font-bold text-(--text-primary)">
                                             {formatNumber(liveMetrics.emailsSent)}
                                         </div>
-                                        <div className="text-sm text-(--text-secondary)">Total Sent</div>
+                                        <div className="text-xs sm:text-sm text-(--text-secondary)">Total Sent</div>
                                     </div>
                                     <div className="text-center">
-                                        <div className="text-2xl font-bold text-(--success)">
+                                        <div className="text-xl sm:text-2xl font-bold text-(--success)">
                                             {formatRate(liveMetrics.deliveryRate)}
                                         </div>
-                                        <div className="text-sm text-(--text-secondary)">Delivery Rate</div>
+                                        <div className="text-xs sm:text-sm text-(--text-secondary)">Delivery Rate</div>
                                     </div>
                                     <div className="text-center">
-                                        <div className="text-2xl font-bold text-(--primary)">
+                                        <div className="text-xl sm:text-2xl font-bold text-(--primary)">
                                             {liveMetrics.sendRate.toFixed(2)}/min
                                         </div>
-                                        <div className="text-sm text-(--text-secondary)">Send Rate</div>
+                                        <div className="text-xs sm:text-sm text-(--text-secondary)">Send Rate</div>
                                     </div>
                                     <div className="text-center">
                                         <div className="text-sm text-(--text-secondary) mb-1">Last Update</div>
-                                        <div className="text-sm font-medium text-(--text-primary)">
+                                        <div className="text-xs sm:text-sm font-medium text-(--text-primary)">
                                             {lastUpdate.toLocaleTimeString()}
                                         </div>
                                     </div>
@@ -265,7 +265,7 @@ const RealTimeCampaignMonitoring = () => {
                     </div>
 
                     {/* Live Metrics Row */}
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
+                    <div className="grid max-[450px]:grid-cols-1 max-[450px]:gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
                         <div className="bg-(--surface) border border-(--border) rounded-lg p-4">
                             <div className="flex items-center justify-between mb-2">
                                 <Icon name="Send" size={20} className="text-(--primary)" />
@@ -273,10 +273,10 @@ const RealTimeCampaignMonitoring = () => {
                                     +{Math.floor(Math.random() * 10) + 1}/min
                                 </div>
                             </div>
-                            <div className="text-2xl font-bold text-(--text-primary) mb-1">
+                            <div className="text-lg sm:text-2xl font-bold text-(--text-primary) mb-1">
                                 {formatNumber(liveMetrics.emailsSent)}
                             </div>
-                            <div className="text-sm text-(--text-secondary)">Emails Sent</div>
+                            <div className="text-xs sm:text-sm text-(--text-secondary)">Emails Sent</div>
                         </div>
 
                         <div className="bg-(--surface) border border-(--border) rounded-lg p-4">
@@ -286,10 +286,10 @@ const RealTimeCampaignMonitoring = () => {
                                     {formatRate(liveMetrics.deliveryRate)}
                                 </div>
                             </div>
-                            <div className="text-2xl font-bold text-(--success) mb-1">
+                            <div className="text-lg sm:text-2xl font-bold text-(--success) mb-1">
                                 {formatNumber(Math.floor(liveMetrics.emailsSent * liveMetrics.deliveryRate / 100))}
                             </div>
-                            <div className="text-sm text-(--text-secondary)">Delivered</div>
+                            <div className="text-xs sm:text-sm text-(--text-secondary)">Delivered</div>
                         </div>
 
                         <div className="bg-(--surface) border border-(--border) rounded-lg p-4">
@@ -299,10 +299,10 @@ const RealTimeCampaignMonitoring = () => {
                                     {formatRate(liveMetrics.openRate)}
                                 </div>
                             </div>
-                            <div className="text-2xl font-bold text-(--accent) mb-1">
+                            <div className="text-lg sm:text-2xl font-bold text-(--accent) mb-1">
                                 {formatNumber(Math.floor(liveMetrics.emailsSent * liveMetrics.openRate / 100))}
                             </div>
-                            <div className="text-sm text-(--text-secondary)">Opens</div>
+                            <div className="text-xs sm:text-sm text-(--text-secondary)">Opens</div>
                         </div>
 
                         <div className="bg-(--surface) border border-(--border) rounded-lg p-4">
@@ -312,10 +312,10 @@ const RealTimeCampaignMonitoring = () => {
                                     {formatRate(liveMetrics.clickRate)}
                                 </div>
                             </div>
-                            <div className="text-2xl font-bold text-(--primary) mb-1">
+                            <div className="text-lg sm:text-2xl font-bold text-(--primary) mb-1">
                                 {formatNumber(Math.floor(liveMetrics.emailsSent * liveMetrics.clickRate / 100))}
                             </div>
-                            <div className="text-sm text-(--text-secondary)">Clicks</div>
+                            <div className="text-xs sm:text-sm text-(--text-secondary)">Clicks</div>
                         </div>
 
                         <div className="bg-(--surface) border border-(--border) rounded-lg p-4">
@@ -325,10 +325,10 @@ const RealTimeCampaignMonitoring = () => {
                                     {formatRate(liveMetrics.bounceRate)}
                                 </div>
                             </div>
-                            <div className="text-2xl font-bold text-(--error) mb-1">
+                            <div className="text-lg sm:text-2xl font-bold text-(--error) mb-1">
                                 {formatNumber(Math.floor(liveMetrics.emailsSent * liveMetrics.bounceRate / 100))}
                             </div>
-                            <div className="text-sm text-(--text-secondary)">Bounces</div>
+                            <div className="text-xs sm:text-sm text-(--text-secondary)">Bounces</div>
                         </div>
 
                         <div className="bg-(--surface) border border-(--border) rounded-lg p-4">
@@ -338,10 +338,10 @@ const RealTimeCampaignMonitoring = () => {
                                     {formatRate(liveMetrics.unsubscribeRate)}
                                 </div>
                             </div>
-                            <div className="text-2xl font-bold text-(--warning) mb-1">
+                            <div className="text-lg sm:text-2xl font-bold text-(--warning) mb-1">
                                 {formatNumber(Math.floor(liveMetrics.emailsSent * liveMetrics.unsubscribeRate / 100))}
                             </div>
-                            <div className="text-sm text-text-secondary">Unsubscribes</div>
+                            <div className="text-xs sm:text-sm text-text-secondary">Unsubscribes</div>
                         </div>
                     </div>
 

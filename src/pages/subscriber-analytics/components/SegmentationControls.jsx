@@ -67,12 +67,12 @@ const SegmentationControls = ({
         <div className="bg-(--surface) border border-(--border) rounded-lg p-4 mb-8">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
                 {/* Segmentation Controls */}
-                <div className="flex flex-wrap items-center gap-4">
+                <div className="flex max-[645px]:flex-col max-[645px]:items-start items-center gap-4">
                     {/* Primary Segment Selector */}
-                    <div className="relative" ref={segmentRef}>
+                    <div className="relative max-[645px]:w-full" ref={segmentRef}>
                         <button
                             onClick={() => setIsSegmentOpen(!isSegmentOpen)}
-                            className="flex items-center space-x-2 px-4 py-2 bg-(--primary-50) hover:bg-(--primary-100) border border-(--primary-100) rounded-lg nav-transition"
+                            className="max-[645px]:w-full flex items-center space-x-2 px-4 py-2 bg-(--primary-50) hover:bg-(--primary-100) border border-(--primary-100) rounded-lg nav-transition"
                         >
                             <Icon name={selectedSegmentData?.icon || 'Users'} size={16} className="text-(--primary)" />
                             <span className="font-medium text-(--primary) text-sm">
@@ -114,10 +114,10 @@ const SegmentationControls = ({
                     </div>
 
                     {/* Demographic Filter */}
-                    <div className="relative" ref={demographicRef}>
+                    <div className="relative max-[645px]:w-full" ref={demographicRef}>
                         <button
                             onClick={() => setIsDemographicOpen(!isDemographicOpen)}
-                            className="flex items-center space-x-2 px-3 py-2 bg-(--secondary-50) hover:bg-(--secondary-100) border border-(--border) rounded-lg nav-transition"
+                            className="max-[645px]:w-full flex items-center space-x-2 px-3 py-2 bg-(--secondary-50) hover:bg-(--secondary-100) border border-(--border) rounded-lg nav-transition"
                         >
                             <Icon name="User" size={14} className="text-(--text-secondary)" />
                             <span className="text-sm text-(--text-secondary)">Demographics</span>
@@ -147,10 +147,10 @@ const SegmentationControls = ({
                     </div>
 
                     {/* Behavior Filter */}
-                    <div className="relative" ref={behaviorRef}>
+                    <div className="relative max-[645px]:w-full" ref={behaviorRef}>
                         <button
                             onClick={() => setIsBehaviorOpen(!isBehaviorOpen)}
-                            className="flex items-center space-x-2 px-3 py-2 bg-(--secondary-50) hover:bg-(--secondary-100) border border-(--border) rounded-lg nav-transition"
+                            className="max-[645px]:w-full flex items-center space-x-2 px-3 py-2 bg-(--secondary-50) hover:bg-(--secondary-100) border border-(--border) rounded-lg nav-transition"
                         >
                             <Icon name="Activity" size={14} className="text-(--text-secondary)" />
                             <span className="text-sm text-(--text-secondary)">Behavior</span>
@@ -188,11 +188,11 @@ const SegmentationControls = ({
                 </div>
 
                 {/* Advanced Controls */}
-                <div className="flex items-center space-x-4">
+                <div className="flex max-[645px]:flex-col max-[645px]:items-start max-[645px]:gap-4 items-center space-x-4">
                     {/* Cohort Analysis Toggle */}
                     <button
                         onClick={() => onCohortToggle(!showCohortAnalysis)}
-                        className={`flex items-center space-x-2 px-3 py-2 rounded-lg nav-transition ${showCohortAnalysis
+                        className={`max-[645px]:w-full flex items-center space-x-2 px-3 py-2 rounded-lg nav-transition ${showCohortAnalysis
                             ? 'bg-(--accent-50) text-(--accent) border border-(--accent-100)' : 'bg-(--secondary-50) text-(--text-secondary) hover:bg-(--secondary-100)'
                             }`}
                     >
@@ -201,21 +201,9 @@ const SegmentationControls = ({
                     </button>
 
                     {/* A/B Test Groups */}
-                    <button className="flex items-center space-x-2 px-3 py-2 bg-(--secondary-50) hover:bg-(--secondary-100) text-(--text-secondary) rounded-lg nav-transition">
+                    <button className="max-[645px]:w-full flex items-center space-x-2 px-3 py-2 bg-(--secondary-50) hover:bg-(--secondary-100) text-(--text-secondary) rounded-lg nav-transition">
                         <Icon name="GitBranch" size={14} />
                         <span className="text-sm font-medium">A/B Groups</span>
-                    </button>
-
-                    {/* Clear Filters */}
-                    <button
-                        onClick={() => {
-                            onSegmentChange('all');
-                            onCohortToggle(false);
-                        }}
-                        className="flex items-center space-x-1 px-2 py-1 text-xs text-(--text-secondary) hover:text-(--text-primary) nav-transition"
-                    >
-                        <Icon name="RotateCcw" size={12} />
-                        <span>Clear</span>
                     </button>
                 </div>
             </div>

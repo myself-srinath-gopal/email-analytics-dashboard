@@ -8,7 +8,6 @@ import TemplatePerformanceMatrix from './components/TemplatePerformanceMatrix';
 import ABTestResultsSummary from './components/ABTestResultsSummary';
 import PerformanceMetricsCards from './components/PerformanceMetricsCards';
 import TemplateDetailsTable from './components/TemplateDetailsTable';
-import TemplatePreviewModal from './components/TemplatePreviewModal';
 
 const TemplatePerformanceAnalytics = () => {
     const [selectedPeriod, setSelectedPeriod] = useState('30d');
@@ -16,8 +15,6 @@ const TemplatePerformanceAnalytics = () => {
     const [abTestFilter, setAbTestFilter] = useState('all');
     const [sortBy, setSortBy] = useState('open_rate');
     const [sortOrder, setSortOrder] = useState('desc');
-    const [selectedTemplate, setSelectedTemplate] = useState(null);
-    const [isPreviewOpen, setIsPreviewOpen] = useState(false);
     const [selectedCampaigns, setSelectedCampaigns] = useState(['campaign-1']);
 
     // Mock template data
@@ -185,11 +182,6 @@ const TemplatePerformanceAnalytics = () => {
         }
     });
 
-    const handleTemplateClick = (template) => {
-        setSelectedTemplate(template);
-        setIsPreviewOpen(true);
-    };
-
     const handleExport = async (exportType, campaigns) => {
         console.log('Exporting template data:', exportType, campaigns);
     };
@@ -329,7 +321,6 @@ const TemplatePerformanceAnalytics = () => {
                         <div className="xl:col-span-2">
                             <TemplatePerformanceMatrix
                                 templates={sortedTemplates}
-                                onTemplateClick={handleTemplateClick}
                                 sortBy={sortBy}
                             />
                         </div>
@@ -343,18 +334,9 @@ const TemplatePerformanceAnalytics = () => {
                     {/* Detailed Performance Table */}
                     <TemplateDetailsTable
                         templates={sortedTemplates}
-                        onTemplateClick={handleTemplateClick}
                     />
                 </div>
             </div>
-
-            {/* Template Preview Modal */}
-            {isPreviewOpen && selectedTemplate && (
-                <TemplatePreviewModal
-                    template={selectedTemplate}
-                    onClose={() => setIsPreviewOpen(false)}
-                />
-            )}
         </div>
     );
 };

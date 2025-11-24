@@ -139,7 +139,7 @@ const SubscriberAnalyticsDashboard = () => {
                             </p>
                         </div>
 
-                        <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+                        <div className="flex max-[775px]:flex-col max-[775px]:items-start flex-row items-center max-[775px]:space-y-3 space-y-0 space-x-4">
                             {/* Period Selector */}
                             <div className="flex items-center space-x-2">
                                 <Icon name="Calendar" size={16} className="text-(--text-secondary)" />

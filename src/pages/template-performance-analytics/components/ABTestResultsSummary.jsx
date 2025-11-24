@@ -63,7 +63,7 @@ const ABTestResultsSummary = ({ templates }) => {
                     <h3 className="text-sm font-medium text-(--text-primary) mb-3">
                         Test Overview
                     </h3>
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div className="text-center p-3 bg-(--secondary-50) rounded-lg">
                             <div className="text-2xl font-bold text-(--text-primary)">
                                 {abTestStats.testing}
@@ -124,7 +124,7 @@ const ABTestResultsSummary = ({ templates }) => {
                         </h3>
                         <div className="space-y-3">
                             {winningTemplates.map((template, index) => (
-                                <div key={template.id} className="flex items-center justify-between p-3 bg-(--success-50) rounded-lg">
+                                <div key={template.id} className="flex max-[420px]:flex-col max-[420px]:items-start max-[420px]:space-y-2 items-center justify-between p-3 bg-(--success-50) rounded-lg">
                                     <div className="flex items-center space-x-3">
                                         <div className="w-8 h-8 bg-(--success) text-white rounded-full flex items-center justify-center text-xs font-bold">
                                             {index + 1}
@@ -138,7 +138,7 @@ const ABTestResultsSummary = ({ templates }) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="text-right">
+                                    <div className="max-[420px]:text-left max-[420px]:space-y-1 text-right">
                                         <div className="text-sm font-bold text-(--success)">
                                             +{template.abTestLift.toFixed(1)}%
                                         </div>
@@ -158,7 +158,7 @@ const ABTestResultsSummary = ({ templates }) => {
                         </h3>
                         <div className="space-y-3">
                             {currentTests.map((template) => (
-                                <div key={template.id} className="flex items-center justify-between p-3 bg-(--warning-50) rounded-lg">
+                                <div key={template.id} className="flex max-[420px]:flex-col max-[420px]:items-start max-[420px]:space-y-2 items-center justify-between p-3 bg-(--warning-50) rounded-lg">
                                     <div className="flex items-center space-x-3">
                                         <div className="w-8 h-8 bg-(--warning) text-white rounded-full flex items-center justify-center">
                                             <Icon name="TestTube" size={14} />
@@ -172,7 +172,7 @@ const ABTestResultsSummary = ({ templates }) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="text-right">
+                                    <div className="max-[420px]:text-left max-[420px]:space-y-1 text-right">
                                         <div className="text-sm font-medium text-(--warning)">
                                             In Progress
                                         </div>

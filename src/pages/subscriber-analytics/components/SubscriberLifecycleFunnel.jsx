@@ -14,7 +14,8 @@ const SubscriberLifecycleFunnel = ({
             count: 50000,
             percentage: 100,
             conversionRate: null,
-            color: '#3B82F6',
+            color: 'bg-(--primary-50)',
+            textColor: 'text-(--primary)',
             icon: 'UserPlus',
             description: 'New subscribers acquired through various channels',
             details: {
@@ -29,7 +30,8 @@ const SubscriberLifecycleFunnel = ({
             count: 42500,
             percentage: 85,
             conversionRate: 85.0,
-            color: '#10B981',
+            color: 'bg-(--success-50)',
+            textColor: 'text-(--success)',
             icon: 'Mail',
             description: 'Subscribers who opened their first email',
             details: {
@@ -42,7 +44,8 @@ const SubscriberLifecycleFunnel = ({
             count: 31875,
             percentage: 63.8,
             conversionRate: 75.0,
-            color: '#F59E0B',
+            color: 'bg-purple-50',
+            textColor: 'text-purple-600',
             icon: 'MousePointer',
             description: 'Subscribers who clicked on email content',
             details: {
@@ -55,7 +58,8 @@ const SubscriberLifecycleFunnel = ({
             count: 22312,
             percentage: 44.6,
             conversionRate: 70.0,
-            color: '#8B5CF6',
+            color: 'bg-(--accent-50)',
+            textColor: 'text-(--accent)',
             icon: 'Repeat',
             description: 'Subscribers active for 30+ days',
             details: {
@@ -68,7 +72,8 @@ const SubscriberLifecycleFunnel = ({
             count: 11156,
             percentage: 22.3,
             conversionRate: 50.0,
-            color: '#EF4444',
+            color: 'bg-(--error-50)',
+            textColor: 'text-(--error)',
             icon: 'Share2',
             description: 'Subscribers who shared or referred others',
             details: {
@@ -80,10 +85,6 @@ const SubscriberLifecycleFunnel = ({
 
     const handleStageClick = (stage) => {
         setSelectedStage(selectedStage?.stage === stage.stage ? null : stage);
-    };
-
-    const getFunnelWidth = (percentage) => {
-        return Math.max(percentage * 0.8, 20); // Minimum 20% width for visibility
     };
 
     return (
@@ -114,44 +115,40 @@ const SubscriberLifecycleFunnel = ({
             {/* Funnel Visualization */}
             <div className="space-y-4 mb-8">
                 {funnelData.map((stage) => (
-                    <div key={stage.stage} className="relative">
+                    <div key={stage.stage} className={`relative h-full`}>
                         {/* Funnel Stage */}
                         <button
                             onClick={() => handleStageClick(stage)}
-                            className={`w-full group relative overflow-hidden rounded-lg border-2 nav-transition ${selectedStage?.stage === stage.stage
+                            className={`w-full group relative overflow-hidden rounded-lg border nav-transition ${selectedStage?.stage === stage.stage
                                 ? 'border-(--primary) bg-(--primary-50)' : 'border-(--border) hover:border-(--secondary-300) bg-(--surface)'
                                 }`}
                         >
                             {/* Funnel Bar */}
                             <div
-                                className="h-16 flex items-center justify-between px-6 relative"
-                                style={{
-                                    background: `linear-gradient(90deg, ${stage.color}15 0%, ${stage.color}25 ${getFunnelWidth(stage.percentage)}%, transparent ${getFunnelWidth(stage.percentage)}%)`
-                                }}
+                                className={`h-16 flex max-[670px]:my-4 max-[670px]:flex-col max-[670px]:h-max max-[670px]:items-start max-[670px]:gap-6 items-center min-[670px]:justify-between px-6 relative`}
                             >
                                 <div className="flex items-center space-x-4 z-10">
                                     <div
-                                        className="p-2 rounded-lg text-white"
-                                        style={{ backgroundColor: stage.color }}
+                                        className={`p-2 rounded-lg ${stage?.color}`}
                                     >
-                                        <Icon name={stage.icon} size={20} />
+                                        <Icon name={stage.icon} size={20} className={stage.textColor} />
                                     </div>
 
                                     <div className="text-left">
                                         <div className="font-semibold text-(--text-primary)">
                                             {stage.stage}
                                         </div>
-                                        <div className="text-sm text-(--text-secondary)">
+                                        <div className="text-xs md:text-sm text-(--text-secondary)">
                                             {stage.description}
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="text-right z-10">
-                                    <div className="font-bold text-lg text-(--text-primary)">
+                                <div className="min-[670px]:text-right text-left z-10">
+                                    <div className="font-semibold md:font-bold text-base md:text-lg text-(--text-primary)">
                                         {stage.count.toLocaleString()}
                                     </div>
-                                    <div className="text-sm text-(--text-secondary)">
+                                    <div className="text-xs md:text-sm text-(--text-secondary)">
                                         {stage.percentage}% of total
                                     </div>
                                 </div>
@@ -159,8 +156,8 @@ const SubscriberLifecycleFunnel = ({
 
                             {/* Conversion Rate Arrow */}
                             {stage.conversionRate && (
-                                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                                    <div className="flex items-center space-x-1 bg-(--surface) border border-(--border) rounded-full px-2 py-1 shadow-sm">
+                                <div className="hidden lg:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                    <div className="flex items-center space-x-1 bg-(--surface) border border-(--border) rounded-full px-2 py-1 shadow-xs">
                                         <Icon name="ArrowDown" size={12} className="text-(--text-secondary)" />
                                         <span className="text-xs font-medium text-(--text-primary)">
                                             {stage.conversionRate}%

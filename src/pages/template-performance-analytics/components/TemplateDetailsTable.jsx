@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Icon from '../../../components/AppIcon';
 
-const TemplateDetailsTable = ({ templates, onTemplateClick }) => {
+const TemplateDetailsTable = ({ templates }) => {
     const [expandedRows, setExpandedRows] = useState(new Set());
 
     const toggleRowExpansion = (templateId) => {
@@ -49,7 +49,7 @@ const TemplateDetailsTable = ({ templates, onTemplateClick }) => {
     return (
         <div className="bg-(--surface) border border-(--border) rounded-lg">
             <div className="p-6 border-b border-(--border)">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
                     <div>
                         <h2 className="text-lg font-semibold text-(--text-primary)">
                             Detailed Performance Table
@@ -171,7 +171,6 @@ const TemplateDetailsTable = ({ templates, onTemplateClick }) => {
                                         <td className="px-6 py-4 text-center">
                                             <div className="flex items-center justify-center space-x-2">
                                                 <button
-                                                    onClick={() => onTemplateClick(template)}
                                                     className="p-2 hover:bg-(--secondary-100) rounded-lg nav-transition"
                                                     title="View template"
                                                 >

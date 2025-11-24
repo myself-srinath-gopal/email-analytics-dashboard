@@ -68,7 +68,7 @@ const EngagementHeatmap = () => {
 
     return (
         <div className="bg-(--surface) border border-(--border) rounded-lg p-6">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col items-start gap-4 md:gap-0 md:flex-row md:items-center justify-between mb-6">
                 <div>
                     <h3 className="text-lg font-semibold text-(--text-primary) mb-1">
                         Subscriber Engagement Heatmap

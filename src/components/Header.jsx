@@ -87,13 +87,13 @@ const Header = () => {
                     </div>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden lg:flex items-center gap-8" role="navigation">
+                    <nav className="hidden lg:flex items-center gap-1 xl:gap-4 2xl:gap-8" role="navigation">
                         {navigationItems.map((item) => (
 
                             <button
                                 key={item.path}
                                 onClick={() => handleNavigation(item.path)}
-                                className={`group relative flex items-center gap-3 px-4 py-2 rounded-lg nav-transition ${location.pathname === item.path
+                                className={`group relative flex items-center gap-1.5 xl:gap-3 px-4 py-2 rounded-lg nav-transition ${location.pathname === item.path
                                     ? 'bg-(--primary-50) text-(--primary) border border-(--primary-100)' : 'text-(--text-secondary) hover:text-(--text-primary) hover:bg-(--secondary-50)'
                                     }`}
                                 aria-current={location.pathname === item.path ? 'page' : undefined}

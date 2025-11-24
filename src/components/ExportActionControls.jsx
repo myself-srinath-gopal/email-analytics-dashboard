@@ -100,7 +100,7 @@ const ExportActionControls = ({
     };
 
     return (
-        <div className="flex max-[490px]:flex-col min-[490px]:items-center gap-3">
+        <div className="flex max-[490px]:flex-col max-[490px]:w-full min-[490px]:items-center gap-3">
             {/* Export Controls */}
             <div className="relative" ref={exportRef}>
                 <button

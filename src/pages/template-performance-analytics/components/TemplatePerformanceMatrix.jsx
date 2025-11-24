@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 
-const TemplatePerformanceMatrix = ({ templates, onTemplateClick, sortBy }) => {
-    const [hoveredTemplate, setHoveredTemplate] = useState(null);
+const TemplatePerformanceMatrix = ({ templates, sortBy }) => {
 
     const getStatusColor = (status) => {
         switch (status) {
@@ -120,7 +119,7 @@ const TemplatePerformanceMatrix = ({ templates, onTemplateClick, sortBy }) => {
     return (
         <div className="bg-(--surface) border border-(--border) rounded-lg">
             <div className="p-6 border-b border-(--border)">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
                     <div>
                         <h2 className="text-lg font-semibold text-(--text-primary)">
                             Template Performance Matrix
@@ -156,9 +155,6 @@ const TemplatePerformanceMatrix = ({ templates, onTemplateClick, sortBy }) => {
                                 <div
                                     key={template.id}
                                     className="group relative bg-(--secondary-50) rounded-lg overflow-hidden hover:shadow-md transition duration-200 cursor-pointer"
-                                    onMouseEnter={() => setHoveredTemplate(template.id)}
-                                    onMouseLeave={() => setHoveredTemplate(null)}
-                                    onClick={() => onTemplateClick(template)}
                                 >
                                     {/* Template Thumbnail */}
                                     <div className="relative h-48 overflow-hidden">
@@ -179,16 +175,6 @@ const TemplatePerformanceMatrix = ({ templates, onTemplateClick, sortBy }) => {
                                             <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-xs font-medium ${template.abTestLift > 0 ? 'bg-(--success) text-white' : 'bg-(--error) text-white'
                                                 }`}>
                                                 {formattedLift}
-                                            </div>
-                                        )}
-
-                                        {/* Hover Overlay */}
-                                        {hoveredTemplate === template.id && (
-                                            <div className="absolute inset-0 bg-black/50 flex items-center justify-center animate-fade-in">
-                                                <div className="text-center text-white">
-                                                    <Icon name="Eye" size={24} className="mx-auto mb-2" />
-                                                    <span className="text-sm font-medium">View Details</span>
-                                                </div>
                                             </div>
                                         )}
                                     </div>

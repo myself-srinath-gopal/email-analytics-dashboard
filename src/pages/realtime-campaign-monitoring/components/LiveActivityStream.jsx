@@ -103,7 +103,7 @@ const LiveActivityStream = ({ isLiveMode }) => {
     return (
         <div className="bg-(--surface) border border-(--border) rounded-xl">
             <div className="p-6 border-b border-(--border)">
-                <div className="flex items-center justify-between">
+                <div className="flex max-[600px]:flex-col max-[600px]:items-start max-[600px]:gap-4 items-center justify-between">
                     <div className="flex items-center space-x-3">
                         <Icon name="Activity" size={24} className="text-(--primary)" />
                         <div>
@@ -145,7 +145,7 @@ const LiveActivityStream = ({ isLiveMode }) => {
                         {activities.map((activity, index) => (
                             <div
                                 key={activity.id}
-                                className={`flex items-start space-x-3 p-3 rounded-lg hover:bg-(--secondary-50) nav-transition ${index === 0 && isLiveMode ? 'animate-pulse bg-(--primary-50)' : ''
+                                className={`flex max-[600px]:flex-col max-[600px]:gap-2 items-start space-x-3 p-3 rounded-lg hover:bg-(--secondary-50) nav-transition truncate ${index === 0 && isLiveMode ? 'animate-pulse bg-(--primary-50)' : ''
                                     }`}
                             >
                                 <div className={`shrink-0 w-8 h-8 rounded-full ${activity.bgColor} flex items-center justify-center`}>
@@ -153,17 +153,17 @@ const LiveActivityStream = ({ isLiveMode }) => {
                                 </div>
 
                                 <div className="flex-1 min-w-0">
-                                    <div className="flex items-center justify-between">
+                                    <div className="flex max-[600px]:flex-col max-[600px]:items-start max-[600px]:gap-1 items-center justify-between">
                                         <p className="text-sm font-medium text-(--text-primary) truncate">
                                             {activity.details}
                                         </p>
-                                        <div className="shrink-0 ml-2">
+                                        <div className="shrink-0 max-[600px]:ml-0 ml-2">
                                             <span className="text-xs text-(--text-secondary)">
                                                 {formatTime(activity.timestamp)}
                                             </span>
                                         </div>
                                     </div>
-                                    <div className="flex items-center justify-between mt-1">
+                                    <div className="flex max-[600px]:flex-col max-[600px]:items-start max-[600px]:gap-1 items-center justify-between mt-1">
                                         <span className="text-xs text-(--text-secondary)">
                                             {activity.subscriber}
                                         </span>
